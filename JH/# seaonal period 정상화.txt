@@ -1,0 +1,45 @@
+# seaonal period 정상화 
+
+   m = Prophet(
+        # growth: Any = 'linear',
+        #      changepoints: Any = None,
+        #      n_changepoints: Any = 25,
+             changepoint_range = 1,
+        #      yearly_seasonality: Any = 'auto',
+        #      weekly_seasonality: Any = 'auto',
+        #      daily_seasonality = ,
+             holidays = holidays,
+             # seasonality_mode = 'multiplicative',
+             # seasonality_prior_scale = 10,
+             holidays_prior_scale =  0.0173,
+             changepoint_prior_scale = 0.0142,
+        #      mcmc_samples = 30, # 나중에 다시 고려할 것
+        #      interval_width =1,
+        #      uncertainty_samples = 500,
+        #      stan_backend: Any = None
+    )
+    m.add_seasonality(name='weekend', period=168, fourier_order=1, condition_name='weekend', prior_scale=7)
+    m.add_seasonality(name='noon', period=24, fourier_order=1, condition_name='noon', prior_scale=10)
+
+# seaonal period 비정상(근데 잘맞음)
+
+   m = Prophet(
+        # growth: Any = 'linear',
+        #      changepoints: Any = None,
+        #      n_changepoints: Any = 25,
+             changepoint_range = 1,
+        #      yearly_seasonality: Any = 'auto',
+        #      weekly_seasonality: Any = 'auto',
+        #      daily_seasonality = ,
+             holidays = holidays,
+             # seasonality_mode = 'multiplicative',
+             # seasonality_prior_scale = 10,
+             holidays_prior_scale =  0.0173,
+             changepoint_prior_scale = 0.017,
+        #      mcmc_samples = 30, # 나중에 다시 고려할 것
+        #      interval_width =1,
+        #      uncertainty_samples = 500,
+        #      stan_backend: Any = None
+    )
+    m.add_seasonality(name='weekend', period=7, fourier_order=84, condition_name='weekend', prior_scale=7)
+    m.add_seasonality(name='noon', period=1, fourier_order=84, condition_name='noon', prior_scale=10)
